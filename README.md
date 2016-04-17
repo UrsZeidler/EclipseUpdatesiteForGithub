@@ -16,6 +16,8 @@ The main source are from the last answer of this thread  http://stackoverflow.co
  
 Add a working buckmister and ant installation this is done on the "Configure System" page.   
  
+ ![manage_jenkins](images/Manage_Jenkins.png)
+ ![configure_jenkins](images/Configure_System.png) 
 
 ###### 1. activate the github pages for your project
  
