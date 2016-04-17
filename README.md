@@ -28,12 +28,12 @@ To create a release and push your artifact to githup you need an api token see h
 
 ##### 3. Configure your jekins job
 
-This is the main part. We go thru this step by step.
+This is the main part. We go through this step by step.
 
 ###### Source code Management
 
-We use github of course, and we checkout the ´*/gh-pages` branch, it is important to ´Clean before checkout`
-![manage_jenkins](images/Source_Code_Management.png)
+We use github of course, and we checkout the `*/gh-pages` branch, it is important to `Clean before checkout`
+![Source_Code_Management](images/Source_Code_Management.png)
 
 
 ###### Build Environment
@@ -42,16 +42,45 @@ The build need to be a release build with two parameters, the version which will
 
 Both parameters will be used by the ant script.
 
-![manage_jenkins](images/Build_Enviorment.png) 
+![Build_Enviorment](images/Build_Enviorment.png) 
 
 
 ###### Before release build
 
 Before we release we need to create the artifacts, the simples way is using the basic job of our project as this creates the updatesite.
 
-![manage_jenkins](images/Before_release_build.png) 
+![Before_release_build](images/Before_release_build.png) 
 
 ###### Build 
 
+The main build action is to mirror the created update site in the gh-pages updatesite, with this the old update site will not get deleted instead the new updatesite will be merged in. So people can reverse the installation to an older version.
+
+You will find the script in the `etc` folder of this project. You need to adjust it to your needs and configuration.
+
+The build action is `Execute shell`
+
+![build_Execute_shell](images/build_Execute_shell.png) 
+
+###### After successful release build
+
+After we created the updatesite, first we need to commit the changes.
+
+![Commit_updatesite](images/Commit_updatesite.png) 
+
+And push it back to the gh-pages branch
+
+![Git_publisher](images/Git_publisher.png)
+
+Now we copy the ant script to the workspace with a simple wget from the repository. The ant script will use the github api to add the ziped updatesite on the release page and creating a release.
+
+![Get_ant_script](images/Get_ant_script.png)
+
+For this we copy the already created updatesite from the basic job in the workspace. Choose your file selector wisely to get only the updatesite and flatten the directories so the updatesite is in the root of the workspace. 
+
+![Copy_artifacts_from_project](images/Copy_artifacts_from_project.png)
+
+Finally we call the ant script, here we need the api token as we create a github release and push the artifact.
+
+![Invoke_Ant](images/Invoke_Ant.png) 
 
 
