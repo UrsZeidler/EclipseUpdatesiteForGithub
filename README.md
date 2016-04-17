@@ -3,6 +3,21 @@
 This document describes a jenkis job to create an updatesite hosted on the gh-pages and also releases the ziped udatesite.
 The main source for hosting the updatesite are from the last answer of this thread  http://stackoverflow.com/questions/2801567/is-it-possible-to-host-an-eclipse-update-site-on-github . 
 
+
+* [prequisite](#prequisite)
+  * [activate the github pages for your project](#1-activate-the-github-pages-for-your-project)
+  * [Create an api token](#2-create-an-api-token)
+  * [Configure your jekins job](#3-configure-your-jekins-job)
+    * [Source code Management](#source-code-management)
+    * [Build Environment](#build-environment)
+    * [Before release build](#before-release-build)
+    * [Build](#build)
+    * [After successful release build](#after-successful-release-build)
+  * [Trigger the release](#trigger-the-release)
+  * [Activate the release](#activate-the-release)
+  
+
+
 #### prequisite
 
 * jenkins  (https://jenkins.io/index.html) an already runnig job to create the p2 updatesite (can be a maven build or done with buckminster) and the following plugins installed :
@@ -20,7 +35,7 @@ Add a working buckmister and ant installation. This is done on the "Configure Sy
  
  ![manage_jenkins](images/Manage_Jenkins.png) ==>  ![configure_jenkins](images/Configure_System.png) 
 
-##### 1. activate the github pages for your project
+##### 1. Activate the github pages for your project
  
 This is a simple step described for example here: https://pages.github.com/.
 
@@ -75,6 +90,10 @@ And push it back to the gh-pages branch via the Git publisher.
 
 Now we copy the ant script to the workspace with a simple wget from your repository. The ant script will use the github api to add the ziped updatesite on the release page and creating a release.
 
+`wget https://raw.githubusercontent.com/UrsZeidler/uml2solidity/master/de.urszeidler.eclipse.solidity.master/etc/build.xml`
+
+Adjust the path to your place of the ant script.
+
 ![Get_ant_script](images/Get_ant_script.png)
 
 For this we copy the already created updatesite from the basic job in the workspace. Choose your file selector wisely to get only the updatesite and flatten the directories so the updatesite is in the root of the workspace. 
@@ -85,6 +104,7 @@ Finally we call the ant script, here we need the api token as we create a github
 
 ![Invoke_Ant](images/Invoke_Ant.png) 
 
+Now save the job configuration as we are done.
 
 ### Trigger the release
 
