@@ -16,19 +16,42 @@ The main source are from the last answer of this thread  http://stackoverflow.co
  
 Add a working buckmister and ant installation this is done on the "Configure System" page.   
  
- ![manage_jenkins](images/Manage_Jenkins.png)
- ![configure_jenkins](images/Configure_System.png) 
+ ![manage_jenkins](images/Manage_Jenkins.png) ==>  ![configure_jenkins](images/Configure_System.png) 
 
-###### 1. activate the github pages for your project
+##### 1. activate the github pages for your project
  
 This is a simple step described for example here https://pages.github.com/.
 
-###### 2. Create an api token
+##### 2. Create an api token
 
 To create a release and push your artifact to githup you need an api token see https://github.com/blog/1509-personal-api-tokens .
 
-###### 3. Configure your jekins job
+##### 3. Configure your jekins job
 
+This is the main part. We go thru this step by step.
+
+###### Source code Management
+
+We use github of course, and we checkout the ´*/gh-pages` branch, it is important to ´Clean before checkout`
+![manage_jenkins](images/Source_Code_Management.png)
+
+
+###### Build Environment
+
+The build need to be a release build with two parameters, the version which will be used as the release version and a description for the release. Note that the description can't have multiple lines.
+
+Both parameters will be used by the ant script.
+
+![manage_jenkins](images/Build_Enviorment.png) 
+
+
+###### Before release build
+
+Before we release we need to create the artifacts, the simples way is using the basic job of our project as this creates the updatesite.
+
+![manage_jenkins](images/Before_release_build.png) 
+
+###### Build 
 
 
 
