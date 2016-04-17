@@ -22,11 +22,11 @@ Add a working buckmister and ant installation. This is done on the "Configure Sy
 
 ##### 1. activate the github pages for your project
  
-This is a simple step described for example here https://pages.github.com/.
+This is a simple step described for example here: https://pages.github.com/.
 
 ##### 2. Create an api token
 
-To create a release and push your artifact to githup you need an api token see https://github.com/blog/1509-personal-api-tokens .
+To create a release and push your artifact to githup you need an api token see: https://github.com/blog/1509-personal-api-tokens
 
 #### 3. Configure your jekins job
 
@@ -42,7 +42,7 @@ We use github of course, and we checkout the `*/gh-pages` branch, it is importan
 
 The build need to be a release build with two parameters, the version which will be used as the release version and a description for the release. Note that the description can't have multiple lines.
 
-Both parameters will be used by the [ant script]().
+Both parameters will be used by the [ant script](https://github.com/UrsZeidler/EclipseUpdatesiteForGithub/blob/master/etc/build.xml).
 
 ![Build_Enviorment](images/Build_Enviorment.png) 
 
@@ -55,9 +55,9 @@ Before we release we need to create the artifacts, the simples way is using the 
 
 ###### Build 
 
-The main build action is to mirror the created update site in the gh-pages updatesite, with this the old update site will not get deleted instead the new updatesite will be merged in. So people can reverse the installation to an older version.
+The main build action is to mirror the created update site in the gh-pages updatesite, with this the old update site will not get deleted instead the new updatesite will be merged in so people can reverse the installation to an older version.
 
-You will find the script in the `etc` folder of this project. You need to adjust it to your needs and configuration.
+You will find the script in the `etc` folder of this project. Copy the content and adjust it to your needs and configuration.
 
 The build action is `Execute shell`
 
@@ -99,7 +99,7 @@ The ant script creates the release as a draft, so after the build the release is
 
 Browse the the release page of your project, add the release information publish the release and your are done.
 
+-----
 
 Found a bug, a typo, a misleading description:
-
 Feel free to open an [issue](https://github.com/UrsZeidler/EclipseUpdatesiteForGithub/issues)
