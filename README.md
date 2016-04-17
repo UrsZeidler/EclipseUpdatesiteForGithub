@@ -102,4 +102,4 @@ Browse the the release page of your project, add the release information publish
 -----
 
 Found a bug, a typo, a misleading description:
-Feel free to open an [issue](https://github.com/UrsZeidler/EclipseUpdatesiteForGithub/issues)
+Feel free to open an [issue](https://github.com/UrsZeidler/EclipseUpdatesiteForGithub/issues).
