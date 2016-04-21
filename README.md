@@ -41,7 +41,19 @@ This is a simple step described for example here: https://pages.github.com/.
 
 ##### 2. Create an api token
 
-To create a release and push your artifact to githup you need an api token see: https://github.com/blog/1509-personal-api-tokens
+To create a release and push your artifact to githup you need an api token.
+Open [Personal access tokens](https://github.com/settings/tokens)
+
+![create_token](images/create_token.png)
+
+Now create the token, name and configure it. We need access to the repository as we want to clone and push back some changes.
+
+![configure_token](images/configure_token.png)
+
+Create the token and copy it.
+
+![copy_token](images/copy_token.png)
+
 
 #### 3. Configure your jekins job
 
@@ -49,7 +61,7 @@ This is the main part. We go through this step by step. You will need the ant sc
 
 ###### Source code Management
 
-We use github of course, and we checkout the `*/gh-pages` branch, it is important to `Clean before checkout`
+We use github, of course, and we checkout the `*/gh-pages` branch, it is important to `Clean before checkout`
 ![Source_Code_Management](images/Source_Code_Management.png)
 
 
@@ -70,7 +82,7 @@ Before we release we need to create the artifacts, the simples way is using the 
 
 ###### Build 
 
-The main build action is to mirror the created update site in the gh-pages updatesite, with this the old update site will not get deleted instead the new updatesite will be merged in so people can reverse the installation to an older version.
+The main build action is to mirror the created update site in the gh-pages updatesite, with this the old update site will not get deleted instead the new updatesite will be merged in, so people can reverse the installation to an older version.
 
 You will find the script in the `etc` folder of this project. Copy the content and adjust it to your needs and configuration.
 
