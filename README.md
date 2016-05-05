@@ -1,12 +1,13 @@
-# EclipseUpdatesiteForGithub
+# Eclipse update site for Github
 
 This document describes a jenkis job to create an updatesite hosted on the gh-pages and also releases the ziped udatesite.
 The main source for hosting the updatesite are from the last answer of this thread  http://stackoverflow.com/questions/2801567/is-it-possible-to-host-an-eclipse-update-site-on-github . 
 
 
 * [prequisite](#prequisite)
-  * [activate the github pages for your project](#1-activate-the-github-pages-for-your-project)
-  * [Create an api token](#2-create-an-api-token)
+  * [Add buckminster and ant](#1-add-buckminster-and-ant)
+  * [activate the github pages for your project](#2-activate-the-github-pages-for-your-project)
+  * [Create an api token](#3-create-an-api-token)
   * [Configure your jekins job](#3-configure-your-jekins-job)
     * [Source code Management](#source-code-management)
     * [Build Environment](#build-environment)
@@ -31,15 +32,31 @@ The main source for hosting the updatesite are from the last answer of this thre
 
 You will also need a shell environment which supports wget and curl. 
  
+##### 1. Add buckminster and ant
+
+The ant and buckminster plugins did not contain any working installation, instead it provides ways to install and manage them. This is very reasonable as it make it possible to have many versions installed and use different versions for different build jobs.
+ 
 Add a working buckmister and ant installation. This is done on the "Configure System" page.   
  
  ![manage_jenkins](images/Manage_Jenkins.png) ==>  ![configure_jenkins](images/Configure_System.png) 
 
-##### 1. Activate the github pages for your project
+In jenkins 2 it is called ![configure_jenkins](images/global-tool-configuration.png).
+
+Choose ![buckmister-installation-1](images/buckmister-installation-1.png) and ![buckmister-installation-3](images/buckmister-installation-3.png) to add an installation.
+
+![buckmister-installation-2](images/buckmister-installation-2.png) the name you choose will point to the directory where the installation is stored. (Blanks will be converted to underscores). Take at least the version 4.2.
+
+This path we later use in the bash script to mirror the update site.
+In our example `/var/lib/jenkins/tools` is the base path where jenkins stores all the installed tools. 
+
+The ant installation is straight forward like the buckminster installation. You may choose every version of ant as we don't use only the basics.
+
+
+##### 2. Activate the github pages for your project
  
 This is a simple step described for example here: https://pages.github.com/.
 
-##### 2. Create an api token
+##### 3. Create an api token
 
 To create a release and push your artifact to githup you need an api token.
 Open [Personal access tokens](https://github.com/settings/tokens)
@@ -85,6 +102,12 @@ Before we release we need to create the artifacts, the simples way is using the 
 The main build action is to mirror the created update site in the gh-pages updatesite, with this the old update site will not get deleted instead the new updatesite will be merged in, so people can reverse the installation to an older version.
 
 You will find the script in the `etc` folder of this project. Copy the content and adjust it to your needs and configuration.
+
+There are two important variables to configure, at first the path to buckminster which is consisting of the main tool path `/var/lib/jenkins/tools` the `hudson.plugins.buckminster.BuckminsterInstallation` directory used by the buckminster plugin and the name of your installation here `bucky_4.2` in the script it is called `ECLIPSE`. 
+
+The other variable `SOURCE` points to the created repository of the basic job accessible thru jenkins. To get the url simply move to the repository directory of the job building the update site.
+
+![path-to-update-site](images/path-to-update-site.png)
 
 The build action is `Execute shell`
 

@@ -1,5 +1,6 @@
-ECLIPSE=/var/lib/jenkins//tools/hudson.plugins.buckminster.BuckminsterInstallation/bucky_4.2/buckminster
-SOURCE=http://valis:8080/view/shr/job/uml2solidity/ws/de.urszeidler.eclipse.solidity.p2/target/repository/
+# '/var/lib/jenkins/tools' is the main tool directory of jenkins
+ECLIPSE=/var/lib/jenkins/tools/hudson.plugins.buckminster.BuckminsterInstallation/bucky_4.2/buckminster
+SOURCE=http://valis:8080/job/uml2solidity/ws/de.urszeidler.eclipse.solidity.p2/target/repository/
 
 LOCAL_SITE=$WORKSPACE/uml2solidity-updatesite
 
