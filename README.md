@@ -44,7 +44,11 @@ In jenkins 2 it is called ![configure_jenkins](images/global-tool-configuration.
 
 Choose ![buckmister-installation-1](images/buckmister-installation-1.png) and ![buckmister-installation-3](images/buckmister-installation-3.png) to add an installation.
 
-![buckmister-installation-2](images/buckmister-installation-2.png) the name you choose will point to the directory where the installation is stored. (Blanks will be converted to underscores). Take at least the version 4.2.
+Use an automatic installation and give the java process some memory.
+
+![buckmister-installation-2](images/buckmister-installation-2.png) 
+
+The name you choose will point to the directory where the installation is stored. (Blanks will be converted to underscores). Take at least the version 4.2.
 
 This path we later use in the bash script to mirror the update site.
 In our example `/var/lib/jenkins/tools` is the base path where jenkins stores all the installed tools. 
