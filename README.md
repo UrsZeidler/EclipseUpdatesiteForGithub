@@ -42,7 +42,7 @@ Add a working buckmister and ant installation. This is done on the "Configure Sy
 
 In jenkins 2 it is called ![configure_jenkins](images/global-tool-configuration.png).
 
-Choose ![buckmister-installation-1](images/buckmister-installation-1.png) and ![buckmister-installation-3](images/buckmister-installation-3.png) to add an installation.
+Choose ![buckmister-installation-1](images/buckmister-installation-1.png) then ![buckmister-installation-3](images/buckmister-installation-3.png) to add an installation.
 
 Use an automatic installation and give the java process some memory.
 
