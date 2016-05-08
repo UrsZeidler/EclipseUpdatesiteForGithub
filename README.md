@@ -53,7 +53,7 @@ The name you choose will point to the directory where the installation is stored
 This path we later use in the bash script to mirror the update site.
 In our example `/var/lib/jenkins/tools` is the base path where jenkins stores all the installed tools. 
 
-The ant installation is straight forward like the buckminster installation. You may choose every version of ant as we don't use only the basics.
+The ant installation is straight forward like the buckminster installation. You may choose every version of ant as we use only the basics provided by any ant version.
 
 
 ##### 2. Activate the github pages for your project
